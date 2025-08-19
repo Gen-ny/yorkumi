@@ -1,8 +1,7 @@
 import React, { useContext } from "react";
 import { CartContext } from "../Content/Cart";
 import { FaTimes, FaTrashAlt } from "react-icons/fa";
-import { Link } from "react-router";
-import { toast } from "react-toastify";
+import { Link, useNavigate } from "react-router";
 import "@fontsource/montserrat";
 
 const CartModal = ({ isOpen, onClose }) => {
@@ -12,18 +11,16 @@ const CartModal = ({ isOpen, onClose }) => {
     0
   );
 
-  const handleCheckoutClick = () => {
-    toast.info("Checkout is not active on this device. Please call or WhatsApp us to order.", {
-      position: "top-center",
-      autoClose: 4000,
-    });
+   const navigate = useNavigate();
+
+  const handleCheckout = () => {
+    navigate("/payment");
   };
 
   return (
     isOpen && (
       <div className="fixed inset-0 bg-black/50 z-50 flex justify-end">
         <div className="w-full max-w-full sm:max-w-md bg-white h-full p-6 shadow-2xl relative overflow-y-auto font-[Montserrat] rounded-l-xl">
-          {/* Close Button */}
           <button
             onClick={onClose}
             className="absolute top-4 right-4 text-[#1b5059] hover:text-red-500 text-xl"
@@ -35,7 +32,7 @@ const CartModal = ({ isOpen, onClose }) => {
           <h2 className="text-2xl font-bold text-[#1b5059] mb-6 border-b pb-3">Your Cart</h2>
 
           {cartItems.length === 0 ? (
-            <p className="text-sm text-gray-500">Your cart is currently empty.</p>
+            <p className="text-sm text-gray-500">Your cart is empty.</p>
           ) : (
             <div className="space-y-6">
               {cartItems.map((item) => (
@@ -67,44 +64,45 @@ const CartModal = ({ isOpen, onClose }) => {
                 </div>
               ))}
 
-              {/* Subtotal & Actions */}
+             
               <div className="border-t pt-4 mt-6">
                 <div className="flex flex-col sm:flex-row justify-between text-sm font-medium text-[#1b5059] mb-3">
                   <span>Subtotal</span>
                   <span className="text-[#ec8733] font-bold">GH₵{subtotal.toFixed(2)}</span>
                 </div>
 
-                {/* Action Buttons */}
+
                 <div className="flex flex-col gap-3 mt-4">
-                  <button
-                    onClick={handleCheckoutClick}
-                    className="w-full bg-[#ec8733] text-white text-center py-3 rounded-full font-semibold hover:bg-[#d86620] transition shadow-md"
-                  >
-                    Proceed to Checkout
-                  </button>
+                  <Link to="/payment" state={{ subtotal }}>
+                    <button
+                      onClick={handleCheckout}
+                      className="w-full bg-[#7f96a1] text-white text-center py-3 rounded-full font-semibold hover:bg-[#688391] transition shadow-md"
+                    >
+                      Proceed to Checkout
+                    </button>
+                  </Link>
                   <Link
                     to="/product"
-                    className="w-full border border-[#ec8733] text-[#ec8733] text-center py-3 rounded-full font-semibold hover:bg-[#ec8733] hover:text-white transition shadow-sm"
+                    className="w-full border border-[#688391] text-[#688391] text-center py-3 rounded-full font-semibold hover:bg-[#688391] hover:text-white transition shadow-sm"
                   >
                     Proceed to Browsing
                   </Link>
                 </div>
 
-                {/* Contact Options */}
                 <div className="mt-4 text-sm text-center space-y-2">
                   <a
-                    href="tel:+233501234567"
-                    className="block text-[#1b5059] underline hover:text-[#ec8733] transition"
+                    href="tel:233269392148"
+                    className="block text-[#1b5059]  hover:text-[#688391] transition"
                   >
-                    📞 Call to Order: +233 540 435 713
+                    📞 Call to Order: +233 269 392 148
                   </a>
                   <a
-                    href="https://wa.me/233540435713?text=Hi Sheady, I want to order from my cart"
+                    href="https://wa.me/233269392148?text=Hi Yorkumi, I want to order from my cart"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block text-[#1b5059] underline hover:text-[#ec8733] transition"
+                    className="block text-[#1b5059]  hover:text-[#688391] transition"
                   >
-                    💬 Chat on WhatsApp
+                     Chat on WhatsApp
                   </a>
                 </div>
               </div>

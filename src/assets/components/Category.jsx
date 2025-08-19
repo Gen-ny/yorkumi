@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { Link } from "react-router";
-import hair from "../images/hair.jpg";
+import hair from "../images/hair.png";
 import skin from "../images/skin.jpg";
-import soap from "../images/soap.jpg";
+import soap from "../images/soap.png";
 import AOS from "aos";
 import "aos/dist/aos.css";
 
@@ -41,7 +41,6 @@ const CategorySection = () => {
             data-aos="fade-up"
             className="group transition transform hover:scale-105"
           >
-            {/* Image with hover-rounded animation */}
             <div className="overflow-hidden mx-auto mb-6 w-[300px] h-[360px] rounded-[160px_160px_0_0] group-hover:rounded-[9999px] transition-all duration-500 ease-in-out">
               <img
                 src={category.image}
@@ -50,13 +49,10 @@ const CategorySection = () => {
               />
             </div>
 
-            {/* Title */}
             <h3 className="text-[16px] font-semibold">{category.title}</h3>
 
-            {/* Description */}
             <p className="text-xs text-gray-500 mt-1 mb-1">{category.description}</p>
 
-            {/* Link */}
             <Link
               to={category.link}
               className="text-sm text-[#1b5059] uppercase inline-block tracking-wide"

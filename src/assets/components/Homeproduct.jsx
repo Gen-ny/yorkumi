@@ -5,7 +5,7 @@ import { CartContext } from "../Content/Cart";
 import { FaTimes } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import toast, { Toaster } from "react-hot-toast"; // ✅ import toast
+import toast, { Toaster } from "react-hot-toast"; 
 
 AOS.init();
 
@@ -31,7 +31,7 @@ const HomeProducts = () => {
     setIsAdding(false);
     closeModal();
 
-    // ✅ Toast
+    
     toast.success(`${product.name} added to cart`, {
       style: {
         borderRadius: "8px",
@@ -49,10 +49,10 @@ const HomeProducts = () => {
 
   return (
     <>
-      <Toaster /> {/* ✅ This enables toast notifications */}
+      <Toaster /> 
       <section className="bg-white py-16 px-4 sm:px-6 w-full">
         <div className="max-w-7xl mx-auto">
-          {/* Header */}
+
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 gap-4">
             <div>
               <h2 className="text-3xl font-bold text-[#1b5059]">Featured Products</h2>
@@ -65,7 +65,6 @@ const HomeProducts = () => {
             </Link>
           </div>
 
-          {/* Product Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
             {featuredProducts.map((item) => (
               <div
@@ -139,7 +138,6 @@ const HomeProducts = () => {
           )}
         </div>
 
-        {/* Quantity Selector */}
         <div className="flex items-center justify-center gap-3 mb-4">
           <button
             onClick={() => setQuantity(Math.max(1, quantity - 1))}
@@ -156,7 +154,6 @@ const HomeProducts = () => {
           </button>
         </div>
 
-        {/* Add to Cart */}
         <button
           onClick={() => handleAddToCart(modalProduct)}
           className="bg-[#ec8733] text-white px-6 py-2 rounded-full hover:bg-[#d86620] transition w-full font-semibold shadow-md"
@@ -165,9 +162,8 @@ const HomeProducts = () => {
           {isAdding ? "Adding to Cart..." : "Add to Cart"}
         </button>
 
-        {/* WhatsApp Order */}
         <a
-          href={`HTTPS://wa.me/+233540435713?text=Hi Sheady, I want to order ${modalProduct.name} (Qty: ${quantity})`}
+          href={`HTTPS://wa.me/+233269392148?text=Hi Yorkumi, I want to order ${modalProduct.name} (Qty: ${quantity})`}
           target="_blank"
           rel="noopener noreferrer"
           className="mt-4 block w-full bg-green-500 text-white text-center py-2 rounded-full hover:bg-green-600 font-semibold transition"
@@ -175,12 +171,11 @@ const HomeProducts = () => {
           Order via WhatsApp
         </a>
 
-        {/* Call to Order */}
         <a
-          href="tel:+233540435713"
+          href="tel:+233269392148"
           className="text-sm text-[#1b5059] mt-3 underline hover:text-[#ec8733] text-center block"
         >
-          Or Call to Order: +233 540 435 713
+          Or Call to Order: +233 269 392 148
         </a>
       </div>
     </div>

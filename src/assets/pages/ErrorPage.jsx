@@ -1,4 +1,3 @@
-// ErrorPage.jsx
 import React from "react";
 import { useNavigate } from "react-router";
 import { motion } from "framer-motion";
@@ -26,7 +25,7 @@ const ErrorPage = () => {
         >
           <img
             src={logo}
-            alt="Sheady Logo"
+            alt="Yorkumi Logo"
             className="w-30 font-extrabold mx-auto mb-6 size-20"
           />
 
@@ -54,7 +53,6 @@ const ErrorPage = () => {
           </motion.div>
         </motion.div>
 
-        {/* Decorative Background Shape */}
         <motion.div
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}

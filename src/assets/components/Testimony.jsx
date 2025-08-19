@@ -52,7 +52,7 @@ const Testimonial = () => {
 
        <Slider {...settings}>
   {testimonials.map((item, index) => (
-    <div key={index} className="!px-[4px]"> {/* Tiny gap using px-1 or 4px */}
+    <div key={index} className="!px-[4px]"> 
       <div className="w-[400px] h-[250px] rounded-xl overflow-hidden shadow-md">
         <img
           src={item.image}

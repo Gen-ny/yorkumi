@@ -9,7 +9,6 @@ const Why = () => {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto">
-        {/* Feature 1 */}
         <div className="flex flex-col items-center space-y-4">
           <div className="bg-gray-200 p-4 rounded-full">
             <Leaf className="w-6 h-6 text-gray-700" />
@@ -20,8 +19,7 @@ const Why = () => {
           </p>
         </div>
 
-        {/* Feature 2 */}
-        <div className="flex flex-col items-center space-y-4">
+       <div className="flex flex-col items-center space-y-4">
           <div className="bg-gray-200 p-4 rounded-full">
             <Shield className="w-6 h-6 text-gray-700" />
           </div>
@@ -31,7 +29,6 @@ const Why = () => {
           </p>
         </div>
 
-        {/* Feature 3 */}
         <div className="flex flex-col items-center space-y-4">
           <div className="bg-gray-200 p-4 rounded-full">
             <Award className="w-6 h-6 text-gray-700" />

@@ -11,60 +11,95 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0f1d25] text-white font-[Montserrat] text-sm">
-      <div className="max-w-7xl mx-auto px-6 py-14 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-      
-        <div>
-          <img src={logo} alt="Yorkumi Logo" className="h-16 font-extrabold mb-4 rounded-md" />
-          <p className="text-white/70 mb-4">
-            Premium natural cosmetics for modern beauty enthusiasts.
+    <footer className="bg-gradient-to-r from-[#0f1d25] via-[#162833] to-[#0f1d25] text-white font-[Montserrat] text-sm">
+      <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-10">
+        
+        <div className="col-span-2">
+          <img
+            src={logo}
+            alt="Yorkumi Logo"
+            className="h-16 mb-4 rounded-md"
+          />
+          <p className="text-white/70 mb-6 max-w-xs">
+            Premium natural cosmetics crafted with care for modern beauty enthusiasts.
           </p>
-          <div className="flex gap-4 text-white/70 text-xl">
-            <Link to="https://www.instagram.com/yorkumi_gh?igsh=MTF5b2NmejAzOThhZA==" className="hover:text-red-600 text-red-500"><FaInstagram /></Link>
-            <Link to="https://www.facebook.com/yorkumigh" className="hover:text-blue-600 text-blue-500"><FaFacebookF /></Link>
-            <Link to="http://tiktok.com/@yorkumishea" className="hover:text-white"><FaTiktok /></Link>
-            <Link to="https://x.com/yorkumishea?t=teeHiS6mNKqNq-1XqQ2Z5A&s=09" className="hover:text-blue-600 text-blue-500"><FaTwitter /></Link>
-            <Link to="https://wa.me/+233269392148" className="hover:text-green-500 text-green-800"><FaWhatsapp /></Link>
+          <div className="flex gap-3">
+            {[
+              { href: "https://www.instagram.com/yorkumi_gh?igsh=MTF5b2NmejAzOThhZA==", icon: <FaInstagram />, color: "hover:bg-pink-600" },
+              { href: "https://www.facebook.com/yorkumigh", icon: <FaFacebookF />, color: "hover:bg-blue-600" },
+              { href: "http://tiktok.com/@yorkumishea", icon: <FaTiktok />, color: "hover:bg-gray-100 hover:text-black" },
+              { href: "https://x.com/yorkumishea?t=teeHiS6mNKqNq-1XqQ2Z5A&s=09", icon: <FaTwitter />, color: "hover:bg-sky-500" },
+              { href: "https://wa.me/+233269392148", icon: <FaWhatsapp />, color: "hover:bg-green-500" },
+            ].map((item, i) => (
+              <Link
+                key={i}
+                to={item.href}
+                className={`w-10 h-10 flex items-center justify-center rounded-full bg-white/10 transition ${item.color}`}
+              >
+                {item.icon}
+              </Link>
+            ))}
           </div>
         </div>
 
-        
         <div>
-          <h4 className="text-white font-semibold mb-4">Products</h4>
+          <h4 className="text-white font-semibold mb-4 relative after:content-[''] after:block after:w-10 after:h-[2px] after:bg-[#ec8733] after:mt-1">
+            Products
+          </h4>
           <ul className="space-y-2 text-white/70">
-            <li><Link to="#" className="hover:text-white">Skincare</Link></li>
-            <li><Link to="#" className="hover:text-white">Haircare</Link></li>
-            <li><Link to="#" className="hover:text-white">Lipcare</Link></li>
-            <li><Link to="#" className="hover:text-white">New Arrivals</Link></li>
+            <li><Link to="/product" className="hover:text-white transition">Skincare</Link></li>
+            <li><Link to="/product" className="hover:text-white transition">Haircare</Link></li>
+            <li><Link to="/product" className="hover:text-white transition">Lipcare</Link></li>
+            <li><Link to="/product" className="hover:text-white transition">New Arrivals</Link></li>
           </ul>
         </div>
 
-       
         <div>
-          <h4 className="text-white font-semibold mb-4">Company</h4>
+          <h4 className="text-white font-semibold mb-4 relative after:content-[''] after:block after:w-10 after:h-[2px] after:bg-[#ec8733] after:mt-1">
+            Company
+          </h4>
           <ul className="space-y-2 text-white/70">
-            <li><Link to="/about" className="hover:text-white">About Us</Link></li>
-            <li><Link to="/contact" className="hover:text-white">Contact</Link></li>
-            <li><Link to="#" className="hover:text-white">Careers</Link></li>
-            <li><Link to="#" className="hover:text-white">Press</Link></li>
+            <li><Link to="/about" className="hover:text-white transition">About Us</Link></li>
+            <li><Link to="/contact" className="hover:text-white transition">Contact</Link></li>
+            <li><Link to="#" className="hover:text-white transition">FAQ</Link></li>
+            <li><Link to="/blog" className="hover:text-white transition">Press</Link></li>
           </ul>
         </div>
 
-        
         <div>
-          <h4 className="text-white font-semibold mb-4">Support</h4>
+          <h4 className="text-white font-semibold mb-4 relative after:content-[''] after:block after:w-10 after:h-[2px] after:bg-[#ec8733] after:mt-1">
+            Support
+          </h4>
           <ul className="space-y-2 text-white/70">
-            <li><Link to="#" className="hover:text-white">FAQ</Link></li>
-            <li><Link to="#" className="hover:text-white">Shipping</Link></li>
-            <li><Link to="#" className="hover:text-white">Returns</Link></li>
-            <li><Link to="#" className="hover:text-white">Size Guide</Link></li>
+            <li><Link to="#" className="hover:text-white transition">Shipping & Returns</Link></li>
+            <li><Link to="#" className="hover:text-white transition">Privacy Policy</Link></li>
+            <li><Link to="#" className="hover:text-white transition">Terms & Conditions</Link></li>
+            <li><Link to="#" className="hover:text-white transition">Contact Support</Link></li>
           </ul>
         </div>
       </div>
 
-    
-      <div className="border-t border-white/10 text-center py-5 text-white/60 text-sm">
-        &copy; {new Date().getFullYear()} YORKUMI Organics. All rights reserved.
+      <div className="border-t border-white/10 ">
+        <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <p className="text-white/60 text-sm">
+            &copy; {new Date().getFullYear()} YORKUMI Organics. All rights reserved.
+          </p>
+          <form
+          action="https://yorkumi.com/subscribe"
+          method="POST"
+          className="flex items-center bg-white/10 rounded-full overflow-hidden">
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="Subscribe to newsletter"
+              className="bg-transparent px-4 py-2 text-white placeholder-white/50 outline-none w-48 md:w-64"
+            />
+            <button className="bg-[#ec8733] px-4 py-2 text-sm font-semibold hover:bg-[#d86620] transition">
+              Subscribe
+            </button>
+          </form>
+        </div>
       </div>
     </footer>
   );

@@ -1,6 +1,6 @@
-// ContactPage.jsx
 import React, { useState } from "react";
 import { FaFacebookF, FaInstagram, FaTiktok, FaWhatsapp } from "react-icons/fa";
+import { Clock, Mail, Phone, Store } from "lucide-react";
 import contactImg from "../images/contact.jpg";
 import "@fontsource/montserrat";
 import Navbar from "../components/Navbar";
@@ -29,14 +29,12 @@ const ContactPage = () => {
     }
   };
 
-  
-
   return (
     <>
       <Navbar />
-      <section className="w-full px-4 py-20 bg-[#fefaf6] font-[Montserrat]">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <div className="h-[610px]">
+      <section className="w-full px-4 sm:px-6 lg:px-8 py-16 bg-[#fefaf6] font-[Montserrat]">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          <div className="h-64 sm:h-80 md:h-96 lg:h-[610px]">
             <img
               src={contactImg}
               alt="Contact Yorkumi"
@@ -44,11 +42,12 @@ const ContactPage = () => {
             />
           </div>
 
-         
           <div className="space-y-6">
             <div className="mb-6">
-              <h2 className="text-3xl font-bold text-[#1b5059] mb-2">Get in Touch </h2>
-              <p className="text-gray-500 italic">
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#1b5059] mb-2">
+                Get in Touch
+              </h2>
+              <p className="text-gray-500 italic text-sm sm:text-base">
                 Have questions or want to learn more about our natural skincare products? We'd love to hear from you.
               </p>
             </div>
@@ -62,7 +61,7 @@ const ContactPage = () => {
                 action="https://formspree.io/f/xanjrnbk"
                 method="POST"
                 onSubmit={handleSubmit}
-                className="space-y-5 bg-white p-6 rounded-xl shadow-md border border-[#f2e8e2]"
+                className="space-y-5 bg-white p-6 rounded-xl shadow-md border border-[#f2e8e2] max-w-md w-full"
               >
                 <input
                   type="text"
@@ -96,23 +95,59 @@ const ContactPage = () => {
             )}
           </div>
         </div>
+
+        <div className="text-center mt-10">
+          <h1 className="text-xl sm:text-2xl font-bold">OR</h1>
+          <a
+            href="https://wa.me/233269392148?text=Hi Yorkumi, I want to order from my cart"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block text-[#1b5059] underline hover:text-[#ec8733] transition mt-2"
+          >
+            Send more enquiries on WhatsApp
+          </a>
+        </div>
       </section>
 
-      <section className=" bg-[#F9F4F0]">
-      <h2 className="text-3xl font-extrabold italic mb-6 text-gray-500">LOCATE US ON THE MAP</h2>
-      <div className="w-full h-[450px] overflow-hidden rounded-lg shadow-md">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d127075.369812566!2d-0.25814090521879574!3d5.551403920559543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1ssakumono%20chapel%20square%20spintex%20road%20accra!5e0!3m2!1sen!2sgh!4v1754392114650!5m2!1sen!2sgh"
-          width="100%"
-          height="100%"
-          style={{ border: 0 }}
-          allowFullScreen=""
-          loading="lazy"
-          referrerPolicy="no-referrer-when-downgrade"
-          title="Komfo Anokye Teaching Hospital Map"
-        ></iframe>
-      </div>
-    </section>
+      <section className="px-4 sm:px-6 lg:px-8 py-10 rounded-lg bg-[#F2E3C2] shadow-lg max-w-4xl mx-auto my-10">
+        <h2 className="text-2xl font-bold text-center mb-6">Business Hours</h2>
+        <div className="space-y-4 text-gray-700 text-sm sm:text-base">
+          {[
+            { day: "Sunday", hours: "Closed", closed: true },
+            { day: "Monday", hours: "9:00 AM – 8:30 PM" },
+            { day: "Tuesday", hours: "9:00 AM – 8:30 PM" },
+            { day: "Wednesday", hours: "9:00 AM – 8:30 PM" },
+            { day: "Thursday", hours: "9:00 AM – 8:30 PM" },
+            { day: "Friday", hours: "9:00 AM – 8:30 PM" },
+            { day: "Saturday", hours: "9:00 AM – 8:30 PM" },
+          ].map(({ day, hours, closed }, i) => (
+            <div key={i} className="flex justify-between border-b pb-2">
+              <span>{day}</span>
+              <span className={closed ? "text-red-500 font-medium" : ""}>
+                {hours}
+              </span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="px-4 sm:px-6 lg:px-8 py-10 bg-[#F9F4F0]">
+        <h2 className="text-xl sm:text-3xl font-extrabold italic mb-6 text-gray-500 text-center">
+          LOCATE US ON THE MAP
+        </h2>
+        <div className="w-full h-64 sm:h-[350px] lg:h-[450px] overflow-hidden rounded-lg shadow-md">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m16!1m12!1m3!1d127075.369812566!2d-0.25814090521879574!3d5.551403920559543!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!2m1!1ssakumono%20chapel%20square%20spintex%20road%20accra!5e0!3m2!1sen!2sgh!4v1754392114650!5m2!1sen!2sgh"
+            width="100%"
+            height="100%"
+            style={{ border: 0 }}
+            allowFullScreen=""
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Yorkumishea Map"
+          ></iframe>
+        </div>
+      </section>
 
       <Footer />
     </>

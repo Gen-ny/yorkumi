@@ -6,7 +6,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import toast, { Toaster } from "react-hot-toast"; // ✅ toast import
+import toast, { Toaster } from "react-hot-toast";
 
 const AllProducts = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -44,7 +44,6 @@ const AllProducts = () => {
     setIsAdding(false);
     closeModal();
 
-    // ✅ Toast Notification
     toast.success(`${product.name} added to cart`, {
       style: {
         borderRadius: "8px",
@@ -63,38 +62,26 @@ const AllProducts = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen">
-        <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-[#ec8733]"></div>
+        <div className="relative w-16 h-16">
+          <div className="absolute w-full h-full border-4 border-[#ec8733] border-t-transparent rounded-full animate-spin"></div>
+          <div className="absolute w-12 h-12 top-2 left-2 border-4 border-[#ec8733] border-b-transparent rounded-full animate-spin-slow"></div>
+        </div>
       </div>
     );
   }
 
   return (
     <>
-      <Toaster /> {/* ✅ Toast Container */}
+
       <Navbar />
-      <section className="w-full px-4 py-12 bg-white font-[Montserrat]">
+      <section className="w-full px-4 py-25 bg-white font-[Montserrat]">
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-10 gap-6">
-            <div className="space-y-1 mt-27">
-              <h2 className="text-3xl font-bold text-[#1b5059]">Latest Products</h2>
-              <p className="text-sm text-gray-500">Showing Results by Category</p>
+            <div className="space-y-1 mt-10">
+              <h2 className="text-3xl font-bold text-[#1b5059]">All Products</h2>
+
             </div>
-            <div className="relative w-full sm:w-auto">
-              <label htmlFor="categoryFilter" className="block text-sm text-[#1b5059] font-medium mb-1">
-                Filter by Category
-              </label>
-              <select
-                id="categoryFilter"
-                onChange={handleCategoryChange}
-                value={selectedCategory}
-                className="appearance-none border border-gray-300 px-5 py-2 rounded-full text-sm bg-white focus:outline-none focus:ring-[#ec8733] focus:border-[#ec8733] shadow-sm w-full"
-              >
-                <option>All</option>
-                <option>Skin Care</option>
-                <option>Hair Care</option>
-                <option>Soap</option>
-              </select>
-            </div>
+
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
@@ -129,7 +116,6 @@ const AllProducts = () => {
           </div>
         </div>
 
-        {/* Modal */}
         {modalProduct && (
           <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4">
             <div className="bg-white max-w-xl w-full rounded-2xl p-8 relative shadow-2xl animate-fadeIn font-[Montserrat]">
@@ -157,6 +143,8 @@ const AllProducts = () => {
                     "This nourishing product is crafted from premium natural ingredients, designed to enhance your skin's health and glow."}
                 </p>
 
+                <p className="text-sm text-green-600 font-bold mb-4">{modalProduct.availability}</p>
+
                 <div className="text-[#ec8733] text-lg font-semibold mb-4">
                   GH₵{modalProduct.price.toFixed(2)}
                   {modalProduct.oldPrice && (
@@ -166,7 +154,6 @@ const AllProducts = () => {
                   )}
                 </div>
 
-                {/* Quantity Selector */}
                 <div className="flex items-center justify-center gap-3 mb-4">
                   <button
                     onClick={() => setQuantity(Math.max(1, quantity - 1))}
@@ -183,31 +170,28 @@ const AllProducts = () => {
                   </button>
                 </div>
 
-                {/* Add to Cart */}
                 <button
                   onClick={() => handleAddToCart(modalProduct)}
-                  className="bg-[#ec8733] text-white px-6 py-2 rounded-full hover:bg-[#d86620] transition w-full font-semibold shadow-md"
+                  className="bg-[#7f96a1] text-white px-6 py-2 rounded-full hover:bg-[#688391] transition w-[50%] font-semibold shadow-md"
                   disabled={isAdding}
                 >
                   {isAdding ? "Adding to Cart..." : "Add to Cart"}
                 </button>
 
-                {/* WhatsApp Order */}
                 <a
-                  href={`https://wa.me/233501234567?text=Hi Sheady, I want to order ${modalProduct.name} (Qty: ${quantity})`}
+                  href={`https://wa.me/233269392148?text=Hi Yorkumi, I want to order ${modalProduct.name} (Qty: ${quantity})`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="mt-4 block w-full bg-green-500 text-white text-center py-2 rounded-full hover:bg-green-600 font-semibold transition"
+                  className="mt-4 block w-[50%] bg-green-400 text-white text-center py-2 rounded-full hover:bg-green-600 font-semibold transition"
                 >
                   Order via WhatsApp
                 </a>
 
-                {/* Call to Order */}
                 <a
-                  href="tel:+233501234567"
-                  className="text-sm text-[#1b5059] mt-3 underline hover:text-[#ec8733] text-center block"
+                  href="tel:+233269392148"
+                  className="text-sm text-[#1b5059] mt-3  hover:text-[#ec8733] text-center block"
                 >
-                  Or Call to Order: +233 50 123 4567
+                  Or Call to Order: +233 26 939 2148
                 </a>
               </div>
             </div>

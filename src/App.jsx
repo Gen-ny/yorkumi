@@ -10,6 +10,10 @@ import About from "./assets/pages/About";
 import Contact from "./assets/pages/Contact";
 import Product from "./assets/pages/Product";
 import ErrorPage from "./assets/pages/ErrorPage";
+import Payment from "./assets/pages/Payment";
+// import Blog from "./assets/pages/Blog";
+import BlogList from "./assets/pages/BlogList";
+import SinglePost from "./assets/pages/SinglePost";
 
 const yorkumisheaRouter = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -17,6 +21,12 @@ const yorkumisheaRouter = createBrowserRouter([
   { path: "/contact", element: <Contact /> },
   { path: "/product", element: <Product /> },
   { path: "*", element: <ErrorPage /> },
+  { path: "/payment", element: <Payment /> },
+    // { path: "/blog", element: <Blog /> },
+  // { path: "/blog/:id", element: <BlogDetails /> }
+  { path: "/blog", element: <BlogList /> },
+  { path: "/blog/:slug", element: <SinglePost /> },
+
 ]);
 
 export default function App() {

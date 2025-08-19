@@ -2,70 +2,27 @@ import { useState, useContext, useEffect } from "react";
 import { FiSearch, FiShoppingCart, FiMenu, FiX } from "react-icons/fi";
 import "@fontsource/montserrat";
 import logo from "../images/y-logo.png";
-import { Link, useNavigate, useLocation } from "react-router";
+import { Link, useNavigate } from "react-router";
 import { CartContext } from "../Content/Cart";
 import CartModal from "./CartModal"; 
-import soap from "../images/soap.jpg";
-import skin from "../images/skin.jpg";  
-import hair from "../images/hair.jpg";
-import p1 from "../images/p1.jpg"; 
-
-const categories = [
-  {
-    name: "All Products",
-    value: "All",
-    image: soap,
-  },
-  {
-    name: "Skin Care",
-    value: "Skin Care",
-    image: skin,
-  },
-  {
-    name: "Hair Care",
-    value: "Hair Care",
-    image: hair,
-  },
-  {
-    name: "Soap",
-    value: "Soap",
-    image: p1,
-  },
-];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [dropdownOpen, setDropdownOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false); 
   const { cartCount } = useContext(CartContext);
   const navigate = useNavigate();
 
-  const handleCategoryClick = (categoryValue) => {
-    const url = categoryValue === "All"
-      ? "/product"
-      : `/product?category=${encodeURIComponent(categoryValue)}`;
-    navigate(url);
-    setDropdownOpen(false);
-  };
-
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (!e.target.closest(".category-dropdown")) {
-        setDropdownOpen(false);
-      }
-    };
-    window.addEventListener("click", handleClickOutside);
-    return () => window.removeEventListener("click", handleClickOutside);
-  }, []);
-
   return (
-    <header className="w-full bg-white shadow-sm font-[Montserrat] fixed  z-50">
+    <header className="w-full bg-white shadow-sm font-[Montserrat] fixed top-0 left-0 z-50">
       {/* Top Bar */}
-      <div className="bg-[#f9f4f0] text-sm text-gray-700 px-6 py-2 flex justify-between items-center">
-        <div className="font-bold italic"> Effortless grace blends with timeless elegance</div>
+      <div className="bg-[#f9f4f0] text-xs sm:text-sm text-gray-700 px-4 sm:px-6 py-2 flex justify-between items-center">
+        <div className="font-bold italic text-center sm:text-left text-sm sm:text-lg">
+          Organic charm meets everlasting glow
+        </div>
 
-        <div className="flex items-center space-x-5">
-          <div className="hidden md:flex items-center border border-gray-300 px-2 py-1 rounded-full">
+        <div className="flex items-center space-x-4 sm:space-x-6">
+          {/* Search - desktop */}
+          <div className="hidden md:flex items-center border border-gray-300 px-4 py-1.5 rounded-full">
             <FiSearch className="mr-2" />
             <input
               type="text"
@@ -74,13 +31,12 @@ const Navbar = () => {
             />
           </div>
 
-          <a
-            href="#"
-            className="text-sm hover:text-[#ec8733] hidden md:inline font-medium"
-          >
-            Find a store
-          </a>
+          {/* Search - mobile */}
+          <div className="flex md:hidden items-center border border-gray-300 px-2 py-1 rounded-full">
+            <FiSearch size={16} />
+          </div>
 
+          {/* Cart */}
           <div
             className="relative cursor-pointer"
             onClick={() => setIsCartOpen(true)}
@@ -94,63 +50,41 @@ const Navbar = () => {
             )}
           </div>
 
+          {/* Mobile Menu Toggle */}
           <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
           </button>
         </div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      {/* Main Navbar */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
+        {/* Logo */}
         <Link to="/">
           <img
             src={logo}
-            alt="Yorkumi Logo" 
-            className="w-50 font-extrabold h-10 object-contain cursor-pointer"
+            alt="Yorkumi Logo"
+            className="w-32 sm:w-40 h-10 object-contain cursor-pointer"
           />
         </Link>
 
-        <nav className="hidden md:flex space-x-6 text-sm font-bold uppercase tracking-wide text-gray-800 relative">
-
+        {/* Desktop Links */}
+        <nav className="hidden md:flex space-x-6 text-sm font-bold uppercase tracking-wide text-gray-800">
           <Link to="/" className="hover:text-[#C37233]">Home</Link>
           <Link to="/about" className="hover:text-[#C37233]">About</Link>
-
-          <div
-            className="relative category-dropdown"
-            onClick={(e) => {
-              e.stopPropagation();
-              setDropdownOpen(!dropdownOpen);
-            }}
-          >
-            <button className="hover:text-[#C37233]">CATEGORIES</button>
-            {dropdownOpen && (
-              <div className="absolute top-full left-0 mt-2 w-56 bg-white shadow-lg rounded-md p-3 space-y-2 z-50">
-                {categories.map((cat) => (
-                  <div
-                    key={cat.value}
-                    className="flex items-center gap-3 px-3 py-2 rounded-md hover:bg-[#fdf6f0] cursor-pointer transition"
-                    onClick={() => handleCategoryClick(cat.value)}
-                  >
-                    <img
-                      src={cat.image}
-                      alt={cat.name}
-                      className="w-8 h-8 rounded-full object-cover border"
-                    />
-                    <span className="text-sm text-[#1b5059] font-medium">{cat.name}</span>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-
           <Link to="/product" className="hover:text-[#C37233]">Shop</Link>
+          <Link to="/blog" className="hover:text-[#C37233]">Blog</Link>
           <Link to="/contact" className="hover:text-[#C37233]">Contact</Link>
         </nav>
       </div>
 
+      {/* Mobile Menu */}
       {isOpen && (
-        <div className="md:hidden bg-white px-6 py-4 space-y-4 shadow-md">
+        <div className="md:hidden bg-white px-6 py-4 space-y-4 shadow-md animate-slide-down">
+          <Link to="/" className="block text-sm font-medium uppercase text-gray-800 hover:text-[#ec8733]">Home</Link>
           <Link to="/about" className="block text-sm font-medium uppercase text-gray-800 hover:text-[#ec8733]">About</Link>
           <Link to="/product" className="block text-sm font-medium uppercase text-gray-800 hover:text-[#ec8733]">Shop</Link>
+          <Link to="/blog" className="block text-sm font-medium uppercase text-gray-800 hover:text-[#ec8733]">Blog</Link>
           <Link to="/contact" className="block text-sm font-medium uppercase text-gray-800 hover:text-[#ec8733]">Contact</Link>
         </div>
       )}

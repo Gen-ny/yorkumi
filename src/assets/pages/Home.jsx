@@ -34,19 +34,22 @@ const Home = () => {
   if (loading) {
     return (
       <div className="flex justify-center items-center h-screen bg-white">
-        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-[#ec8733] border-opacity-50"></div>
+        <div className="relative w-16 h-16">
+          <div className="absolute w-full h-full border-4 border-[#ec8733] border-t-transparent rounded-full animate-spin"></div>
+          <div className="absolute w-12 h-12 top-2 left-2 border-4 border-[#ec8733] border-b-transparent rounded-full animate-spin-slow"></div>
+        </div>
       </div>
     );
   }
 
   return (
     <div className="w-full bg-white font-[Montserrat] relative overflow-x-hidden">
-      
+
       <header className="w-full sticky top-0 z-50 bg-white shadow-sm">
         <Navbar />
       </header>
 
-      
+
       <main className="flex flex-col w-full space-y-16 sm:space-y-20">
         <section className="w-full">
           <Hero />
@@ -69,14 +72,14 @@ const Home = () => {
         </section>
       </main>
 
-    
 
-  
+
+
       <footer className="bg-[#fdf6f0]">
         <Footer />
       </footer>
 
-      
+
       {showTopBtn && (
         <button
           onClick={scrollToTop}

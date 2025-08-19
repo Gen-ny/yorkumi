@@ -1,16 +1,12 @@
 import React, { useEffect } from 'react';
 import { Link } from "react-router";
 import { motion } from "framer-motion";
-import team1 from "../images/shashadu.jpg";
-import team2 from "../images/moha.jpg";
-import team4 from "../images/sheri.jpg";
-import about1 from "../images/soap.jpg";
-import about2 from "../images/soap.jpg";
+import about1 from "../images/about.jpg";
+import about2 from "../images/ceo.jpg";
 import "@fontsource/montserrat";
 import Testimonial from "../components/Testimony";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Vid from "../images/vid.mp4";
 import Why from "../components/Why";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -27,7 +23,7 @@ const About = () => {
     <>
       <Navbar />
       <section className="w-full bg-[#fdf6f0] text-[#1b5059] font-[Montserrat]">
-        {/* Hero */}
+       
         <div className="max-w-7xl mx-auto px-6 py-16 text-center">
           <motion.h2
             initial={{ opacity: 0, y: -20 }}
@@ -58,11 +54,11 @@ const About = () => {
 
 
 
-        {/* Problems & Solutions */}
+       
         <div className="bg-white py-16 px-6">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10 items-center">
             <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 0.6 }}>
-              <img src={about1} alt="Natural Care" className="rounded-xl shadow-md w-full object-cover" />
+              <img src={about1} alt="Natural Care" className="rounded-xl h-[70vh] shadow-md w-full object-cover" />
             </motion.div>
             <div>
               <h3 className="text-2xl font-bold mb-4">Welcome To The Yorkumi Story</h3>
@@ -92,7 +88,6 @@ const About = () => {
       </div>
 
       <div className="flex flex-col md:flex-row items-center justify-center gap-10">
-        {/* First Circle */}
         <div className="rounded-full border border-[#caa87c] hover:bg-[#ddc3a6] w-64 h-64 flex items-center justify-center text-center p-6" data-aos="fade-up" data-aos-delay="100">
           <div>
             <h3 className="font-semibold text-sm md:text-base mb-2">HERBS &<br />ESSENTIAL OILS</h3>
@@ -102,7 +97,7 @@ const About = () => {
 
         <span className="text-3xl font-bold" data-aos="fade-up" data-aos-delay="150">+</span>
 
-        {/* Second Circle */}
+        
         <div className="rounded-full border border-[#caa87c] hover:bg-[#ddc3a6] w-64 h-64 flex items-center justify-center text-center p-6" data-aos="fade-up" data-aos-delay="200">
           <div>
             <h3 className="font-semibold text-sm md:text-base mb-2">EDIBLE BUTTERS<br />& PLANT OILS</h3>
@@ -112,7 +107,7 @@ const About = () => {
 
         <span className="text-3xl font-bold" data-aos="fade-up" data-aos-delay="250">=</span>
 
-        {/* Final Circle (Filled) */}
+       
         <div className="rounded-full bg-[#ddc3a6] w-64 h-64 flex items-center justify-center text-center p-6 text-white" data-aos="fade-up" data-aos-delay="300">
           <div>
             <h3 className="font-semibold text-sm md:text-base mb-2 text-black">SKIN CARE</h3>
@@ -125,20 +120,23 @@ const About = () => {
       </div>
     </section>
 
-        {/* Impact Section */}
+       
         <div className="bg-[#1b5059] text-white py-20 px-6">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-3xl font-bold mb-4">Making a Difference</h3>
-              <ul className="space-y-4 text-sm">
+              <h3 className="text-3xl font-bold mb-4">WHY CHOOSE US</h3>
+              <ul className="space-y-4 text-smj">
                 <li>
-                  <strong>🌍 Community Empowerment:</strong> Women in northern Ghana find income opportunities through shea processing.
+                  <strong>👁 VISION:</strong> To become a worldwide household name igniting confidence in skin through natural cosmetics.
                 </li>
                 <li>
-                  <strong>💼 Job Creation:</strong> Our growth helps support over 200 distributors and workers.
+                  <strong>🌍 MISSION:</strong> To provide natural skin & personal care products that inspire confidence in skin tone, look, feel & smell through the usage of our natural line of products.
                 </li>
                 <li>
-                  <strong>🌱 Economic Diversification:</strong> We contribute to reducing dependency on imported cosmetics.
+                  <strong>🏷 TAG LINE:</strong> Your Skin Confidence Naturally.
+                </li>
+                <li>
+                  <strong>❄️ CORE VALUES:</strong> Excellent Customer Service, Quality, Empathy & Respect.
                 </li>
               </ul>
             </div>

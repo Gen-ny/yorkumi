@@ -1,17 +1,15 @@
-// src/context/CartContext.js
-
 import React, { createContext, useState, useEffect } from "react";
 
 export const CartContext = createContext();
 
 export const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState(() => {
-    const storedCart = localStorage.getItem("sheady_cart");
+    const storedCart = localStorage.getItem("yorkumi_cart");
     return storedCart ? JSON.parse(storedCart) : [];
   });
 
   useEffect(() => {
-    localStorage.setItem("sheady_cart", JSON.stringify(cartItems));
+    localStorage.setItem("yorkumi_cart", JSON.stringify(cartItems));
   }, [cartItems]);
 
   const addToCart = (product) => {
