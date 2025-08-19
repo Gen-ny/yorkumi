@@ -13,7 +13,7 @@ const Footer = () => {
   return (
     <footer className="bg-gradient-to-r from-[#0f1d25] via-[#162833] to-[#0f1d25] text-white font-[Montserrat] text-sm">
       <div className="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-10">
-        
+
         <div className="col-span-2">
           <img
             src={logo}
@@ -25,16 +25,41 @@ const Footer = () => {
           </p>
           <div className="flex gap-3">
             {[
-              { href: "https://www.instagram.com/yorkumi_gh?igsh=MTF5b2NmejAzOThhZA==", icon: <FaInstagram />, color: "hover:bg-pink-600" },
-              { href: "https://www.facebook.com/yorkumigh", icon: <FaFacebookF />, color: "hover:bg-blue-600" },
-              { href: "http://tiktok.com/@yorkumishea", icon: <FaTiktok />, color: "hover:bg-gray-100 hover:text-black" },
-              { href: "https://x.com/yorkumishea?t=teeHiS6mNKqNq-1XqQ2Z5A&s=09", icon: <FaTwitter />, color: "hover:bg-sky-500" },
-              { href: "https://wa.me/+233269392148", icon: <FaWhatsapp />, color: "hover:bg-green-500" },
+              {
+                href: "https://www.instagram.com/yorkumi_gh?igsh=MTF5b2NmejAzOThhZA==",
+                icon: <FaInstagram />,
+                bg: "bg-pink-600",
+                hover: "hover:bg-pink-700",
+              },
+              {
+                href: "https://www.facebook.com/yorkumigh",
+                icon: <FaFacebookF />,
+                bg: "bg-blue-600",
+                hover: "hover:bg-blue-700",
+              },
+              {
+                href: "http://tiktok.com/@yorkumishea",
+                icon: <FaTiktok />,
+                bg: "bg-gray-800",
+                hover: "hover:bg-gray-100 hover:text-black",
+              },
+              {
+                href: "https://x.com/yorkumishea?t=teeHiS6mNKqNq-1XqQ2Z5A&s=09",
+                icon: <FaTwitter />,
+                bg: "bg-sky-500",
+                hover: "hover:bg-sky-600",
+              },
+              {
+                href: "https://wa.me/+233269392148",
+                icon: <FaWhatsapp />,
+                bg: "bg-green-500",
+                hover: "hover:bg-green-600",
+              },
             ].map((item, i) => (
               <Link
                 key={i}
                 to={item.href}
-                className={`w-10 h-10 flex items-center justify-center rounded-full bg-white/10 transition ${item.color}`}
+                className={`w-10 h-10 flex items-center justify-center rounded-full text-white transition ${item.bg} ${item.hover}`}
               >
                 {item.icon}
               </Link>
@@ -85,9 +110,9 @@ const Footer = () => {
             &copy; {new Date().getFullYear()} YORKUMI Organics. All rights reserved.
           </p>
           <form
-          action="https://yorkumi.com/subscribe"
-          method="POST"
-          className="flex items-center bg-white/10 rounded-full overflow-hidden">
+            action="https://yorkumi.com/subscribe"
+            method="POST"
+            className="flex items-center bg-white/10 rounded-full overflow-hidden">
             <input
               type="email"
               name="email"

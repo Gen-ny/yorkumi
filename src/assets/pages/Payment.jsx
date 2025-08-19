@@ -74,7 +74,6 @@ export default function PaymentAndDelivery() {
         </h1>
 
         <form onSubmit={handleSubmit} className="space-y-8">
-          {/* Delivery Section */}
           <div>
             <h2 className="text-lg font-semibold mb-4 text-gray-700">
               Delivery Information
@@ -137,7 +136,6 @@ export default function PaymentAndDelivery() {
             </div>
           </div>
 
-          {/* Payment Section */}
           <div>
             <h2 className="text-lg font-semibold mb-4 text-gray-700">
               Payment Method
@@ -175,7 +173,6 @@ export default function PaymentAndDelivery() {
               </label>
             </div>
 
-            {/* Card Payment */}
             {formData.paymentMethod === "card" && (
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
                 <input
@@ -208,7 +205,6 @@ export default function PaymentAndDelivery() {
               </div>
             )}
 
-            {/* Mobile Money Payment */}
             {formData.paymentMethod === "momo" && (
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
                 <select

@@ -22,8 +22,6 @@ const yorkumisheaRouter = createBrowserRouter([
   { path: "/product", element: <Product /> },
   { path: "*", element: <ErrorPage /> },
   { path: "/payment", element: <Payment /> },
-    // { path: "/blog", element: <Blog /> },
-  // { path: "/blog/:id", element: <BlogDetails /> }
   { path: "/blog", element: <BlogList /> },
   { path: "/blog/:slug", element: <SinglePost /> },
 

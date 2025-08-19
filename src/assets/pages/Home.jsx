@@ -83,7 +83,7 @@ const Home = () => {
       {showTopBtn && (
         <button
           onClick={scrollToTop}
-          className="fixed bottom-5 right-5 bg-[#ec8733] text-white p-3 rounded-full shadow-lg hover:bg-[#d86620] transition z-50"
+          className="fixed bottom-5 right-5 bg-[#08662b] animate-bounce text-white p-3 rounded-full shadow-lg hover:bg-[#065f2b] transition z-50"
           aria-label="Back to Top"
         >
           <FaArrowUp />
