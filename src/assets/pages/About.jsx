@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from "react-router";
 import { motion } from "framer-motion";
 import about1 from "../images/about.jpg";
@@ -10,14 +10,47 @@ import Footer from "../components/Footer";
 import Why from "../components/Why";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { FaArrowUp } from "react-icons/fa";
+
 
 
 
 const About = () => {
 
+  const [showTopBtn, setShowTopBtn] = useState(false);
+    const [loading, setLoading] = useState(true);
+  
+    useEffect(() => {
+      const handleScroll = () => {
+        setShowTopBtn(window.scrollY > 300);
+      };
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+  
+    useEffect(() => {
+      const timer = setTimeout(() => setLoading(false), 1500);
+      return () => clearTimeout(timer);
+    }, []);
+  
+    const scrollToTop = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
   useEffect(() => {
   AOS.init({ duration: 1000, once: true });
 }, []);
+
+if (loading) {
+    return (
+      <div className="flex justify-center items-center h-screen bg-white">
+        <div className="relative w-16 h-16">
+          <div className="absolute w-full h-full border-4 border-[#ec8733] border-t-transparent rounded-full animate-spin"></div>
+          <div className="absolute w-12 h-12 top-2 left-2 border-4 border-[#ec8733] border-b-transparent rounded-full animate-spin-slow"></div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -124,8 +157,8 @@ const About = () => {
         <div className="bg-[#1b5059] text-white py-20 px-6">
           <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <h3 className="text-3xl font-bold mb-4">WHY CHOOSE US</h3>
-              <ul className="space-y-4 text-smj">
+              <h3 className="text-3xl font-bold font-Montserrat mb-4">WHY CHOOSE US</h3>
+              <ul className="space-y-4 text-sm font-Montserrat">
                 <li>
                   <strong>👁 VISION:</strong> To become a worldwide household name igniting confidence in skin through natural cosmetics.
                 </li>
@@ -158,6 +191,15 @@ const About = () => {
 
       <Why />
       <Footer />
+      {showTopBtn && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-5 right-5 bg-[#08662b] animate-bounce text-white p-3 rounded-full shadow-lg hover:bg-[#065f2b] transition z-50"
+          aria-label="Back to Top"
+        >
+          <FaArrowUp />
+        </button>
+      )}
     </>
   );
 };

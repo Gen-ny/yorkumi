@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router"; // <- not "react-router"
+import { Link } from "react-router"; 
 import blog1 from "../images/blog1.jpeg";
 import blog2 from "../images/blog2.jpg";
 import blog3 from "../images/blog3.webp";
@@ -43,7 +43,6 @@ export default function BlogList({ posts = [
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-12">
-      {/* lock to 2 columns on >=sm; 1 column on very small screens */}
       <div className="grid gap-8 grid-cols-1 sm:grid-cols-2 !grid-flow-row">
         {safePosts.map((post) => (
           <article

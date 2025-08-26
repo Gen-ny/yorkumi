@@ -59,7 +59,7 @@ const HomeProducts = () => {
             </div>
             <Link
               to="/product"
-              className="text-sm text-[#1b5059] font-medium hover:text-[#ec8733] transition"
+              className="text-sm p-1.5 hover:bg-[#1B5059] rounded-lg border text-[#1b5059] font-medium hover:text-white transition"
             >
               View All ↗
             </Link>

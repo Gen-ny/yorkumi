@@ -11,7 +11,6 @@ import Contact from "./assets/pages/Contact";
 import Product from "./assets/pages/Product";
 import ErrorPage from "./assets/pages/ErrorPage";
 import Payment from "./assets/pages/Payment";
-// import Blog from "./assets/pages/Blog";
 import BlogList from "./assets/pages/BlogList";
 import SinglePost from "./assets/pages/SinglePost";
 

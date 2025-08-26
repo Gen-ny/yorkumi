@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { Link, useLocation  } from "react-router";
+import { Link, useLocation, useNavigate } from "react-router";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
+
 
 export default function PaymentAndDelivery() {
 
@@ -21,15 +25,28 @@ export default function PaymentAndDelivery() {
     momoNumber: "",
   });
 
+  const navigate = useNavigate();
+
+  const handleCancelOrder = () => {
+    toast.error("Your order has been cancelled!", {
+      position: "top-right",
+      autoClose: 3000,
+    });
+
+    setTimeout(() => {
+      navigate("/product");
+    }, 3000);
+  };
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handlePaystackPayment = () => {
     const handler = window.PaystackPop.setup({
-      key: "pk_live_268f3b0f6562fa8da51210cd65e6f12c4c8273f4", 
+      key: "pk_live_268f3b0f6562fa8da51210cd65e6f12c4c8273f4",
       email: formData.email,
-      amount: subtotal * 100 ,
+      amount: subtotal * 100,
       currency: "GHS",
       channels:
         formData.paymentMethod === "momo"
@@ -65,6 +82,10 @@ export default function PaymentAndDelivery() {
       handlePaystackPayment();
     }
   };
+
+
+
+
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[#2A1009] to-[#D0CBC8] py-8 px-4">
@@ -238,7 +259,12 @@ export default function PaymentAndDelivery() {
           >
             Complete Purchase
           </button>
-          <Link to="/product"><p className="text-center  text-red-600">❌ Cancel <span className="cursor-pointer">Order</span></p></Link>
+          <p
+            onClick={handleCancelOrder}
+            className="text-center text-red-600 cursor-pointer"
+          >
+            ❌ Cancel Order
+          </p>
         </form>
       </div>
     </div>

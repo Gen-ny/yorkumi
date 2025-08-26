@@ -1,4 +1,4 @@
-import React from 'react';
+import { useEffect, useState } from "react";
 import BlogCard from '../components/BlogCard';
 import blog1 from "../images/blog1.jpeg";
 import blog2 from "../images/blog2.jpg";
@@ -7,6 +7,8 @@ import blog4 from "../images/blog4.jpeg";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Why from "../components/Why";
+import { FaArrowUp } from "react-icons/fa";
+
 
 
 const posts = [
@@ -46,6 +48,28 @@ const posts = [
 
 
 const BlogList = () => {
+
+  const [showTopBtn, setShowTopBtn] = useState(false);
+    const [loading, setLoading] = useState(true);
+  
+    useEffect(() => {
+      const handleScroll = () => {
+        setShowTopBtn(window.scrollY > 300);
+      };
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+  
+    useEffect(() => {
+      const timer = setTimeout(() => setLoading(false), 1500);
+      return () => clearTimeout(timer);
+    }, []);
+  
+    const scrollToTop = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+
   return (
     <>
       <Navbar />
@@ -63,6 +87,16 @@ const BlogList = () => {
       </div>
       <Why />
       <Footer />
+
+      {showTopBtn && (
+              <button
+                onClick={scrollToTop}
+                className="fixed bottom-5 right-5 bg-[#08662b] animate-bounce text-white p-3 rounded-full shadow-lg hover:bg-[#065f2b] transition z-50"
+                aria-label="Back to Top"
+              >
+                <FaArrowUp />
+              </button>
+            )}
     </>
   );
 };

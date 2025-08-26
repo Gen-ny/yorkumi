@@ -10,20 +10,17 @@ const categories = [
   {
     title: "Skin Care",
     image: skin,
-    link: "/product?category=Skin Care",
-    description: "Hydrate & protect your skin naturally.",
+    description: "Hydrate and rejuvenate your skin.",
   },
   {
     title: "Hair Care",
     image: hair,
-    link: "/product?category=Hair Care",
-    description: "Nourish and define healthy hair.",
+    description: "Nourish and strengthen healthy hair.",
   },
   {
     title: "Soap",
     image: soap,
-    link: "/product?category=Soap",
-    description: "Gentle cleansing with pure botanicals.",
+    description: "Gently cleanse your skin with our natural soaps.",
   },
 ];
 
@@ -41,7 +38,7 @@ const CategorySection = () => {
             data-aos="fade-up"
             className="group transition transform hover:scale-105"
           >
-            <div className="overflow-hidden mx-auto mb-6 w-[300px] h-[360px] rounded-[160px_160px_0_0] group-hover:rounded-[9999px] transition-all duration-500 ease-in-out">
+            <div className="overflow-hidden mx-auto mb-6 w-[300px] h-[360px] rounded-[9999px] ">
               <img
                 src={category.image}
                 alt={category.title}
@@ -51,14 +48,8 @@ const CategorySection = () => {
 
             <h3 className="text-[16px] font-semibold">{category.title}</h3>
 
-            <p className="text-xs text-gray-500 mt-1 mb-1">{category.description}</p>
+            <p className="text-sm font-Montserrat text-gray-500 mt-1 mb-1">{category.description}</p>
 
-            <Link
-              to={category.link}
-              className="text-sm text-[#1b5059] uppercase inline-block tracking-wide"
-            >
-              Shop Now ↗
-            </Link>
           </div>
         ))}
       </div>

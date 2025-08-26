@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { CartContext } from "../Content/Cart";
 import products from "../data/Products";
-import { FaTimes } from "react-icons/fa";
+import { FaTimes, FaArrowUp } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import Navbar from "../components/Navbar";
@@ -11,7 +11,6 @@ import toast, { Toaster } from "react-hot-toast";
 const AllProducts = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [modalProduct, setModalProduct] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [isAdding, setIsAdding] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const { addToCart } = useContext(CartContext);
@@ -57,6 +56,26 @@ const AllProducts = () => {
         secondary: "#fff",
       },
     });
+  };
+
+  const [showTopBtn, setShowTopBtn] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowTopBtn(window.scrollY > 300);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   if (loading) {
@@ -200,6 +219,17 @@ const AllProducts = () => {
 
       </section>
       <Footer />
+
+      {showTopBtn && (
+              <button
+                onClick={scrollToTop}
+                className="fixed bottom-5 right-5 bg-[#08662b] animate-bounce text-white p-3 rounded-full shadow-lg hover:bg-[#065f2b] transition z-50"
+                aria-label="Back to Top"
+              >
+                <FaArrowUp />
+              </button>
+            )}
+      
     </>
   );
 };

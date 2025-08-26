@@ -1,71 +1,59 @@
 import React from "react";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import T1 from "../images/T1.jpg";
-import T2 from "../images/T2.jpg";
-import T3 from "../images/T3.jpg";
-import T4 from "../images/T4.jpg";
-import T5 from "../images/T5.jpg";
-import T6 from "../images/T6.jpg";
-import T8 from "../images/T8.jpg";
-import T9 from "../images/T9.jpg";
-import T10 from "../images/T10.jpg";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 const testimonials = [
-  { image: T1 },
-  { image: T2 },
-  { image: T3 },
-  { image: T4 },
-  { image: T5 },
-  { image: T6 },
-  { image: T8 },
-  { image: T9 },
-  { image: T10 },
+  { id: 1, initials: "NA", message: "Yorkumi has completely transformed my skincare routine. My skin feels smooth and radiant.", name: "Naa Adjorkor", role: "Customer" },
+  { id: 2, initials: "KO", message: "I love how natural and refreshing the products feel. Definitely worth it!", name: "Kwame Owusu", role: "Customer" },
+  { id: 3, initials: "NY", message: "The shea butter is unmatched. My skin stays moisturized all day.", name: "Nana Yaa", role: "Customer" },
+  { id: 4, initials: "EK", message: "Great quality and excellent packaging. Yorkumi never disappoints.", name: "Emmanuel Kyei", role: "Customer" },
+  { id: 5, initials: "CF", message: "Ever since I started using Yorkumi, my skin feels healthier and looks younger.", name: "Charles Frimpong", role: "Customer" },
+  { id: 6, initials: "YT", message: "The natural scent is amazing, and I always get compliments on my skin.", name: "Yaw Tetteh", role: "Customer" },
 ];
 
-const Testimonial = () => {
-  const settings = {
-    infinite: true,
-    speed: 1000,
-    slidesToShow: 2,
-    slidesToScroll: 2,
-    autoplay: true,
-    autoplaySpeed: 3000,
-    arrows: false,
-    responsive: [
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
-
+export default function Testimony() {
   return (
-    <section className="bg-white py-16 px-6">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-[#1b5059] mb-10">What Our Customers Say
- </h2>
+    <section className="py-16 bg-gray-50"
+      style={{
+        backgroundImage:
+          "url('https://asianbeautyessentials.com/cdn/shop/articles/Shea_butter_with_cosmetic_products.jpg?v=1690608351')",
+      }}>
+      <div className="max-w-6xl mx-auto px-6">
+        <h2 className="text-3xl font-bold text-center text-[#1b5059] mb-12">
+          What Our Customers Say
+        </h2>
 
-       <Slider {...settings}>
-  {testimonials.map((item, index) => (
-    <div key={index} className="!px-[4px]"> 
-      <div className="w-[400px] h-[250px] rounded-xl overflow-hidden shadow-md">
-        <img
-          src={item.image}
-          alt="testimonial"
-          className="w-full h-full object-cover"
-        />
-      </div>
-    </div>
-  ))}
-</Slider>
+        <Swiper
+          modules={[Autoplay, Pagination]}
+          autoplay={{ delay: 4000, pauseOnMouseEnter: true }}
+          pagination={{ clickable: true }}
+          spaceBetween={30}
+          breakpoints={{
+            0: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
+          }}
+          className="pb-16"
+        >
+          {testimonials.map((t) => (
+            <SwiperSlide key={t.id}>
+              <div className="bg-white rounded-2xl shadow-lg p-8 text-center relative h-full flex flex-col justify-between">
+                <div>
+                  <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center rounded-full bg-[#1b5059] text-white text-xl font-bold">
+                    {t.initials}
+                  </div>
+                  <p className="text-gray-600 italic mb-4">“{t.message}”</p>
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-[#ec8733]">{t.name}</h3>
+                  <span className="text-sm text-gray-500">{t.role}</span>
+                </div>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </section>
   );
-};
-
-export default Testimonial;
+}

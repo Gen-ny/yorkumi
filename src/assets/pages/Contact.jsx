@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import { FaFacebookF, FaInstagram, FaTiktok, FaWhatsapp } from "react-icons/fa";
-import { Clock, Mail, Phone, Store } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { FaArrowUp } from "react-icons/fa";
 import contactImg from "../images/contact.jpg";
 import "@fontsource/montserrat";
 import Navbar from "../components/Navbar";
@@ -28,6 +27,27 @@ const ContactPage = () => {
       form.reset();
     }
   };
+
+  const [showTopBtn, setShowTopBtn] = useState(false);
+    const [loading, setLoading] = useState(true);
+  
+    useEffect(() => {
+      const handleScroll = () => {
+        setShowTopBtn(window.scrollY > 300);
+      };
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+  
+    useEffect(() => {
+      const timer = setTimeout(() => setLoading(false), 1500);
+      return () => clearTimeout(timer);
+    }, []);
+  
+    const scrollToTop = () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
 
   return (
     <>
@@ -150,6 +170,16 @@ const ContactPage = () => {
       </section>
 
       <Footer />
+
+      {showTopBtn && (
+        <button
+          onClick={scrollToTop}
+          className="fixed bottom-5 right-5 bg-[#08662b] animate-bounce text-white p-3 rounded-full shadow-lg hover:bg-[#065f2b] transition z-50"
+          aria-label="Back to Top"
+        >
+          <FaArrowUp />
+        </button>
+      )}
     </>
   );
 };

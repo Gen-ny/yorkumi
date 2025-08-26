@@ -18,7 +18,7 @@ const HeroSection = () => {
 
         <div className="mt-4 flex flex-col sm:flex-row gap-4">
           <Link to="/product">
-            <button className="px-6 py-2.5 cursor-pointer bg-[#2A1009] hover:bg-[#C7C1BF] text-white rounded-md transition">
+            <button className="px-6 py-2.5 cursor-pointer bg-[#2A1009] hover:bg-[#4e1e11] text-white rounded-md transition">
               Shop Now
             </button>
           </Link>
