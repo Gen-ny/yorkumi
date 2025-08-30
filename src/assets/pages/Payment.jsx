@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { FaLock } from "react-icons/fa";
+
 
 
 
@@ -88,7 +90,7 @@ export default function PaymentAndDelivery() {
 
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-[#2A1009] to-[#D0CBC8] py-8 px-4">
+    <div className="min-h-screen bg-gradient-to-b from-[#2A1009] to-[#D0CBC8] font-Montserrat py-8 px-4">
       <div className="max-w-4xl mx-auto bg-[#D0CBC8] shadow-lg rounded-2xl p-6 md:p-10">
         <h1 className="text-2xl font-bold mb-6 text-gray-800">
           Payment & Delivery Details
@@ -255,15 +257,22 @@ export default function PaymentAndDelivery() {
 
           <button
             type="submit"
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold font-Montserrat py-3 rounded-lg transition"
           >
             Complete Purchase
           </button>
-          <p
+          <div className="flex justify-center items-center">
+            <p
             onClick={handleCancelOrder}
-            className="text-center text-red-600 cursor-pointer"
+            className="text-center cursor-pointer px-3 py-2 inline-block rounded-lg bg-[#F5F5F5] font-Montserrat hover:bg-gray-200"
           >
-            ❌ Cancel Order
+            <span className="font-light">X</span> <span className="font-semibold">Cancel Payment</span>
+          </p>
+          </div>
+          <p
+            className="text-center cursor-pointer flex justify-center items-center gap-2 text-sm text-gray-600 mt-2"
+          >
+           <FaLock /> Secured by <span className="font-bold">paystack</span>
           </p>
         </form>
       </div>
