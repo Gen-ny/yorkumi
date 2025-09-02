@@ -96,6 +96,7 @@ const BlogList = () => {
               >
                 <FaArrowUp />
               </button>
+              
             )}
     </>
   );
