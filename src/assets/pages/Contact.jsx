@@ -78,7 +78,7 @@ const ContactPage = () => {
               </div>
             ) : (
               <form
-                action="https://formspree.io/f/xanjrnbk"
+                action="#"
                 method="POST"
                 onSubmit={handleSubmit}
                 className="space-y-5 bg-white p-6 rounded-xl shadow-md border border-[#f2e8e2] max-w-md w-full"
